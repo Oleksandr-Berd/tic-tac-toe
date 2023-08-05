@@ -75,7 +75,7 @@ const darkTheme: object = {
     secondaryBG: "#1F3641",
     text: "#A8BFC9",
     x: "#31C3BD",
-    y: "#F2B137",
+    o: "#F2B137",
     textSecondary: "#DBE8ED",
 
     primary: "#31C3BD",
