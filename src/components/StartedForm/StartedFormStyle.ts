@@ -5,10 +5,17 @@ interface IProps {
 }
 
 export const CommonContainer = styled.div`
+  padding-top: 119px;
+  padding-bottom: 119px;
+
   text-align: center;
 `;
 
 export const FormStyled = styled.form`
+ 
+`;
+
+export const FormContainer = styled.div`
   margin-top: ${(props) => props.theme.space[10]};
   margin-bottom: ${(props) => props.theme.space[8]};
 
@@ -63,6 +70,10 @@ export const FormHeaderTitle = styled.h3`
 export const LabelStyled = styled.label<IProps>`
   display: block;
   min-width: ${(props) => props.theme.percentage[6]};
+
+  padding-top: ${(props) => props.theme.space[5]};
+  padding-bottom: ${(props) => props.theme.space[5]};
+
 
   background-color: ${(props) =>
     props.$active === "true" ? props.theme.color.text : props.theme.color.bg};

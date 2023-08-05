@@ -1,5 +1,5 @@
 import { Mark } from "../../utils/interfaces";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import * as SC from "./StartedFormStyle";
 
@@ -7,7 +7,12 @@ import { ReactComponent as XIcon } from "../../assets/icon-x.svg";
 import { ReactComponent as OIcon } from "../../assets/icon-o.svg";
 import Icons from "../Icons/Icons";
 
-const StartedForm = () => {
+
+interface IProps {
+    submit: (playerMark:string)=>void,
+}
+
+const StartedForm:React.FC<IProps> = ({submit}):JSX.Element => {
     const [playerMark, setPlayerMark] = useState<Mark>("x");
 
     const titleForm = "Pick player 1's mark";
@@ -15,17 +20,21 @@ const StartedForm = () => {
 
     const handleCheck = (evt: any) => {
         const newMark = evt.currentTarget.value as Mark;
-        console.log(newMark);
 
         setPlayerMark(newMark)
     };
 
-
+   const onSubmit = (evt:ChangeEvent<HTMLFormElement>) => {
+        evt.preventDefault()
+          submit(playerMark)
+       
+}
 
     return (
         <SC.CommonContainer>
             <Icons />
-            <SC.FormStyled>
+            <SC.FormStyled onSubmit={onSubmit}>
+                <SC.FormContainer>
                 <SC.FormHeaderTitle>{titleForm}</SC.FormHeaderTitle>
                 <SC.ButtonContainer>
                     <SC.LabelStyled $active={(playerMark === "x").toString()}>
@@ -49,12 +58,14 @@ const StartedForm = () => {
                         <OIcon width={32} />
                     </SC.LabelStyled>
                 </SC.ButtonContainer>
-                <SC.FormFooterText>{footerForm}</SC.FormFooterText>
+                    <SC.FormFooterText>{footerForm}</SC.FormFooterText>
+                </SC.FormContainer>
+                <SC.SubmitButtonsContainer>
+                    <button type="submit">new game (vs cpu)</button>
+                    <button type="submit">new game (vs player)</button>
+                </SC.SubmitButtonsContainer>
             </SC.FormStyled>
-            <SC.SubmitButtonsContainer>
-                <button>new game (vs cpu)</button>
-                <button>new game (vs player)</button>
-            </SC.SubmitButtonsContainer>
+            
         </SC.CommonContainer>
     );
 };
