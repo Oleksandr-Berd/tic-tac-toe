@@ -65,16 +65,23 @@ const darkTheme: object = {
   },
 
   fontFamily: {
+    base: "Outfit",
     heading: "Ibarra Real Nova",
     body: "Public Sans",
   },
+
   color: {
     bg: "#1A2A33",
-secondaryBG:"#1F3641",
+    secondaryBG: "#1F3641",
+    text: "#A8BFC9",
+    x: "#31C3BD",
+    y: "#F2B137",
+    textSecondary: "#DBE8ED",
 
+    primary: "#31C3BD",
+    secondary: "#F2B137",
     page: "#33323D",
     errors: "#F43030",
-    text: "#EAEAEB",
     cyan: "#5FB4A2",
     dark: "#203A4C",
     secondaryBody: "#33323D",
@@ -85,7 +92,6 @@ secondaryBG:"#1F3641",
     placeholder: "#203A4C",
 
     main: "#10141E",
-    secondary: "#5A698F",
     semiDark: "#161D2F",
     green: "#00FF00",
   },
