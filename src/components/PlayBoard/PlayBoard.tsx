@@ -6,52 +6,44 @@ import { winningCombinations } from "../../utils/combination";
 import GameModal from "../GameModal/GameModal";
 
 interface IProps {
-    click: () => void;
+    click: (index:number) => void;
     currentPlayer: string;
+    oArray: number[],
+    xArray:number[]
 }
 
-const PlayBoard: React.FC<IProps> = ({ click, currentPlayer }): JSX.Element => {
-    const [xArray, setXArray] = React.useState<number[]>([])
-    const [oArray, setOArray] = React.useState<number[]>([])
+const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray }): JSX.Element => {
+    // const [xArray, setXArray] = React.useState<number[]>([])
+    // const [oArray, setOArray] = React.useState<number[]>([])
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
     const [winner, setWinner] = React.useState<string>("")
 
 
-    const handleClick = (index:number) => {
-        click();
-        if (currentPlayer === "x") {
-            setXArray(prev => [...prev, index])
-        } else {
-            setOArray(prev => [...prev, index])
-        }
-    };
-    
-    const testX = winningCombinations.map((el) => el.every(subel => xArray.includes(subel)))
-    const testO = winningCombinations.map((el) => el.every(subel => oArray.includes(subel)))
 
 
-    const toggleOverlay = () => {
-        setIsOpen(!isOpen)
-    }
-    
-    React.useEffect(() => {
-        if (testX.includes(true)) {
-            setWinner("x")
-            setIsOpen(true)
-           
-        }
-        if (testO.includes(true)) {
-            setWinner("o")
-            setIsOpen(true)
-        }
-    }, [currentPlayer, testO, testX])
 
    
 
+    const handleClick = (index:number) => {
+        click(index);
+    };
+    
+
+    React.useEffect(() => {
+        const testX:any = winningCombinations.map((el) => el.every(subel => xArray.includes(subel)))
+        const testO:any = winningCombinations.map((el) => el.every(subel => oArray.includes(subel)))
+
+        if (testX.includes(true) | testO.includes(true))
+        {
+            setIsOpen(true)
+            setWinner(testX.includes(true) ? "x" : "o")
+        } 
+    }, [xArray, oArray])
+   
 
     const elementsArray = new Array(9).fill("");
 
-    return (
+    return (<>
         <SC.GridContainer>
             {elementsArray.map((el, idx) => (
                 <PlayBoardItem
@@ -61,8 +53,10 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer }): JSX.Element => {
                     currentPlayer={currentPlayer}
                 />
             ))}
-            <GameModal toggleOverlay={toggleOverlay} isOpen={isOpen} winner={winner} />
-        </SC.GridContainer>
+
+            </SC.GridContainer>
+            <GameModal  isOpen={isOpen} winner={winner} />
+    </>
     );
 };
 
