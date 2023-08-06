@@ -10,34 +10,35 @@ interface IProps {
 }
 
 
-const GameModal: React.FC<IProps> = ({ isOpen, winner }): JSX.Element => {    
-    
+const GameModal: React.FC<IProps> = ({ isOpen, winner }): JSX.Element => {
+
     return (
-            <Modal
-                centered
-                size="lg"
-                show={isOpen}
-                // onHide={() => setLgShow(false)}
-                aria-labelledby="example-modal-sizes-title-lg"
-            >
-                <Modal.Header>
-                    <Modal.Title id="example-modal-sizes-title-lg">
-                        {winner} is win!
-                    </Modal.Title>
-                    
-                </Modal.Header>
-                <Modal.Body>
-                    <h2>{winner} takes the round</h2>
-                </Modal.Body>
-                <div>
-                    <Button variant="primary">
-                        quit
-                    </Button>
-                    <Button variant="primary">
-                       next round
-                    </Button>
-                </div>
-            </Modal>
+        <SC.CommonContainer
+            centered
+            size="lg"
+            show={isOpen}
+            backdrop={false}
+        // onHide={() => setLgShow(false)}
+        // aria-labelledby="example-modal-sizes-title-lg"
+        >
+            <SC.HeaderStyled>
+                <Modal.Title id="example-modal-sizes-title-lg">
+                    {winner} is win!
+                </Modal.Title>
+
+            </SC.HeaderStyled>
+            <SC.BodyStyled>
+                <h2><span>{winner}</span> takes the round</h2>
+            </SC.BodyStyled>
+            <div>
+                <Button variant="primary">
+                    quit
+                </Button>
+                <Button variant="primary">
+                    next round
+                </Button>
+            </div>
+        </SC.CommonContainer>
 
     )
 }
