@@ -16,7 +16,7 @@ const PlayBoardItem: React.FC<IProps> = ({ moveClick, currentPlayer, index }): J
 
 
 
-    const handleClick = (evt: any) => {
+    const handleClick = () => {
         setIsMoved(currentPlayer)
         moveClick(index)
        

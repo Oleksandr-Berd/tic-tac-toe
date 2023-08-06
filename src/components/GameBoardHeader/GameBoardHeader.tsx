@@ -10,7 +10,9 @@ interface IProps {
     currentPlayer: string
 }
 
-const GameBoardHeader:React.FC<IProps> = ({currentPlayer}):JSX.Element => {
+const GameBoardHeader: React.FC<IProps> = ({ currentPlayer }): JSX.Element => {
+    
+
     return (<SC.BoardHeader>
         <Icons />
         <SC.TableStyle>
