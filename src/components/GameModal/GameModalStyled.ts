@@ -4,9 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 export const CommonContainer = styled(Modal)`
   text-align: center;
 
-  &&& {
-    background-color: ${(props) => props.theme.color.secondaryBG};
-  }
+  background-color: rgba(10, 10, 10, 0.5);
 `;
 
 export const HeaderStyled = styled(Modal.Header)`
