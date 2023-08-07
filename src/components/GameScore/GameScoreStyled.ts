@@ -1,26 +1,25 @@
 import styled from "styled-components";
 
 export const ScoreTable = styled.ul`
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const ScoreBlock = styled.li`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 
-min-height: 64px;
+  min-height: 64px;
 
   padding-top: 13px;
   padding-bottom: 11px;
   padding-left: 30px;
   padding-right: 30px;
 
-  text-align: center;
+  /* text-align: center; */
 
   font-size: ${(props) => props.theme.size.XS};
   color: ${(props) => props.theme.color.bg};
@@ -45,3 +44,8 @@ min-height: 64px;
     margin-right: ${(props) => props.theme.space[5]};
   }
 `;
+
+
+export const Text = styled.span`
+
+`

@@ -4,16 +4,18 @@ import * as SC from "./PlayBoardStyled";
 import PlayBoardItem from "./PlayBoardItem";
 import { winningCombinations } from "../../utils/combination";
 import GameModal from "../GameModal/GameModal";
+import { Action } from "../../utils/reducer";
 
 interface IProps {
     click: (index:number) => void;
     currentPlayer: string;
     oArray: number[],
     xArray: number[],
-    playersMark: {player1: string, player2: string},
+    playersMark: { player1: string, player2: string },
+    handleScore: (action:Action)=>void,
 }
 
-const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, playersMark }): JSX.Element => {
+const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, playersMark, handleScore }): JSX.Element => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
     const [winner, setWinner] = React.useState<string>("")
 
@@ -40,14 +42,12 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, pla
 
     const elementsArray = new Array(9).fill("");
 
-
-    console.log("xArray", xArray);
-    console.log("oArray", oArray);
-
-
+    const closeModal = ():void => {
+        setIsOpen(false)
+    }
 
     return (<>
-        <SC.GridContainer>
+        <SC.GridContainer id="board">
             {elementsArray.map((el, idx) => (
                 <PlayBoardItem
                     key={idx}
@@ -57,8 +57,8 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, pla
                 />
             ))}
 
-            </SC.GridContainer>
-        <GameModal isOpen={isOpen} $winner={playerWinner!} winnersMark={winner} />
+        </SC.GridContainer>
+        <GameModal isOpen={isOpen} $winner={playerWinner!} winnersMark={winner} handleScore={handleScore} closeModal={closeModal} />
     </>
     );
 };
