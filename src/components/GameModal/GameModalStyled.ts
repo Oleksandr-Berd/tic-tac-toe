@@ -62,16 +62,20 @@ export const QuitButton = styled(Button)`
   padding-left: ${(props) => props.theme.space[4]};
   padding-right: ${(props) => props.theme.space[4]};
 
-  text-transform: uppercase;
   background-color: #979797;
-  color: ${(props) => props.theme.color.secondaryBG};
-  font-size: ${(props) => props.theme.size.N};
-  font-family: ${(props) => props.theme.fontFamily.base};
-  font-weight: ${(props) => props.theme.weight.bold};
 
   border: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+
+  & > a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: ${(props) => props.theme.color.secondaryBG};
+    font-size: ${(props) => props.theme.size.N};
+    font-family: ${(props) => props.theme.fontFamily.base};
+    font-weight: ${(props) => props.theme.weight.bold};
+  }
 `;
 
 export const NextButton = styled(Button)`

@@ -27,7 +27,7 @@ const App: React.FC = (): JSX.Element => {
 
   
   return (
-    <div className="App">
+    <div className="App" id="app">
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <SharedLayout>

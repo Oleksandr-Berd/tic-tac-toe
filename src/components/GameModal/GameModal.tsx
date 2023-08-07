@@ -37,7 +37,7 @@ const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark }): JSX.Elem
             </SC.BodyStyled>
             <SC.ButtonContainer>
                 <SC.QuitButton variant="primary">
-                    quit
+                    <a href="app"> quit</a>
                 </SC.QuitButton>
                 <SC.NextButton variant="primary">
                     next round

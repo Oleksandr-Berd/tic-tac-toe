@@ -3,8 +3,7 @@ import * as SC from "./GameBoardStyled"
 import GameBoardHeader from '../GameBoardHeader/GameBoardHeader';
 import GameScore from '../GameScore/GameScore';
 import PlayBoard from '../PlayBoard/PlayBoard';
-import { useEffect, useState } from "react";
-import { winningCombinations } from "../../utils/combination";
+import { useState } from "react";
 
 interface IProps {
     player1: string,
@@ -19,14 +18,6 @@ const GameBoard: React.FC<IProps> = ({ player1, player2 }): JSX.Element => {
     const [currentPlayer, setCurrentPlayer] = useState<string>("x")
     const [xArray, setXArray] = useState<number[]>([])
     const [oArray, setOArray] = useState<number[]>([])
-
-
-    console.log("player1", player1);
-    console.log("player2", player2);
-    console.log("currentPlayer", currentPlayer);
-
-
-
 
     const handleCLick = (index: number) => {
         switch (currentPlayer) {
