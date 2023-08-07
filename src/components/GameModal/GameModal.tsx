@@ -1,7 +1,9 @@
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import * as SC from "./GameModalStyled"
+
+import { ReactComponent as OSvg } from "../../assets/icon-o.svg"
+import { ReactComponent as XSvg } from "../../assets/icon-x.svg"
 
 interface IProps {
     toggleOverlay?: () => void,
@@ -23,21 +25,24 @@ const GameModal: React.FC<IProps> = ({ isOpen, winner }): JSX.Element => {
         >
             <SC.HeaderStyled>
                 <Modal.Title id="example-modal-sizes-title-lg">
-                    {winner} is win!
+                    {winner} wins!
                 </Modal.Title>
 
             </SC.HeaderStyled>
             <SC.BodyStyled>
-                <h2><span>{winner}</span> takes the round</h2>
+                <SC.WinnerText winner={winner}>
+                    {winner === "x" ? <XSvg width={30} fill="#31C3BD" /> : <OSvg width={30} fill="#F2B137" />}
+                    <span>takes the round</span>
+                </SC.WinnerText>
             </SC.BodyStyled>
-            <div>
-                <Button variant="primary">
+            <SC.ButtonContainer>
+                <SC.QuitButton variant="primary">
                     quit
-                </Button>
-                <Button variant="primary">
+                </SC.QuitButton>
+                <SC.NextButton variant="primary">
                     next round
-                </Button>
-            </div>
+                </SC.NextButton>
+            </SC.ButtonContainer>
         </SC.CommonContainer>
 
     )
