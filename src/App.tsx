@@ -24,8 +24,10 @@ const App: React.FC = (): JSX.Element => {
 
   const { player1, player2 } = playersMark
   
+
+  
   return (
-    <div className="App">
+    <div className="App" id="app">
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <SharedLayout>

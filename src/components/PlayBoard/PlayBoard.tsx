@@ -9,20 +9,13 @@ interface IProps {
     click: (index:number) => void;
     currentPlayer: string;
     oArray: number[],
-    xArray:number[]
+    xArray: number[],
+    playersMark: {player1: string, player2: string},
 }
 
-const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray }): JSX.Element => {
-    // const [xArray, setXArray] = React.useState<number[]>([])
-    // const [oArray, setOArray] = React.useState<number[]>([])
+const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, playersMark }): JSX.Element => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
     const [winner, setWinner] = React.useState<string>("")
-
-
-
-
-
-   
 
     const handleClick = (index:number) => {
         click(index);
@@ -41,7 +34,17 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray }): 
     }, [xArray, oArray])
    
 
+    const playerWinner = Object.keys(playersMark).find(
+        (el) => playersMark[el as keyof typeof playersMark] === winner
+    );    
+
     const elementsArray = new Array(9).fill("");
+
+
+    console.log("xArray", xArray);
+    console.log("oArray", oArray);
+
+
 
     return (<>
         <SC.GridContainer>
@@ -55,7 +58,7 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray }): 
             ))}
 
             </SC.GridContainer>
-            <GameModal  isOpen={isOpen} winner={winner} />
+        <GameModal isOpen={isOpen} $winner={playerWinner!} winnersMark={winner} />
     </>
     );
 };
