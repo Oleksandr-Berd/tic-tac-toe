@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
 
 interface IStylesProps {
-    winner:string,
+    $winner:string,
 }
 
 export const CommonContainer = styled(Modal)`
@@ -101,6 +101,6 @@ justify-content: center;
 & > span{
     margin-left: ${props => props.theme.space[2]};
     
-    color: ${props => props.winner === "x" ? props.theme.color.x : props.theme.color.o};
+    color: ${props => props.$winner === "x" ? props.theme.color.x : props.theme.color.o};
 }
 `
