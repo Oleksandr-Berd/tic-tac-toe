@@ -9,10 +9,10 @@ import Icons from "../Icons/Icons";
 
 
 interface IProps {
-    submit: (playerMark:string)=>void,
+    submit: (playerMark: string) => void,
 }
 
-const StartedForm:React.FC<IProps> = ({submit}):JSX.Element => {
+const StartedForm: React.FC<IProps> = ({ submit }):JSX.Element => {
     const [playerMark, setPlayerMark] = useState<Mark>("x");
 
     const titleForm = "Pick player 1's mark";
@@ -25,10 +25,12 @@ const StartedForm:React.FC<IProps> = ({submit}):JSX.Element => {
     };
 
    const onSubmit = (evt:ChangeEvent<HTMLFormElement>) => {
-        evt.preventDefault()
+       evt.preventDefault()
+       
           submit(playerMark)
        
-}
+   }
+    
 
     return (
         <SC.CommonContainer>
@@ -61,8 +63,7 @@ const StartedForm:React.FC<IProps> = ({submit}):JSX.Element => {
                     <SC.FormFooterText>{footerForm}</SC.FormFooterText>
                 </SC.FormContainer>
                 <SC.SubmitButtonsContainer>
-                    <button type="submit">new game (vs cpu)</button>
-                    <button type="submit">new game (vs player)</button>
+                    <button type="submit" data-opponent="player" >new game</button>
                 </SC.SubmitButtonsContainer>
             </SC.FormStyled>
             
