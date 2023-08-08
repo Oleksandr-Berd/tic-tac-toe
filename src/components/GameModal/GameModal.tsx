@@ -5,7 +5,6 @@ import * as SC from "./GameModalStyled"
 import { ReactComponent as OSvg } from "../../assets/icon-o.svg"
 import { ReactComponent as XSvg } from "../../assets/icon-x.svg"
 import { Action } from '../../utils/reducer';
-import { useState } from 'react';
 
 interface IProps {
     toggleOverlay?: () => void,
@@ -13,32 +12,34 @@ interface IProps {
     $winner: string,
     winnersMark: string,
     handleScore: (action: Action) => void,
-    closeModal: ()=> void,
+    closeModal: () => void,
+    clearBoard: () => void,
 
 }
 
 
-const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark, handleScore, closeModal }): JSX.Element => {
+const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark, handleScore, closeModal, clearBoard }): JSX.Element => {
 
     const handleNext = () => {
         switch ($winner) {
             case "player1":
                 handleScore({ type: "PLAYER1" })
                 closeModal()
+                clearBoard()
                 break
             case "player2":
                 handleScore({ type: "PLAYER2" })
                 closeModal()
+                clearBoard()
                 break
             case "tie":
                 handleScore({ type: "TIE" })
                 closeModal()
-
+                clearBoard()
         }
 
 }
 
-    
     
     return (
         <SC.CommonContainer

@@ -39,14 +39,19 @@ const GameBoard: React.FC<IProps> = ({ player1, player2 }): JSX.Element => {
         dispatch(action)
     }
 
+    const clearBoard = () => {
+        setXArray([])
+        setOArray([])
+        setCurrentPlayer("x")
+    }    
 
-    console.log(score);
+console.log(score);
 
 
     return (<SC.BoardStyled >
         <GameBoardHeader currentPlayer={currentPlayer} />
-        <PlayBoard click={handleCLick} currentPlayer={currentPlayer} xArray={xArray} oArray={oArray} playersMark={{ player1, player2 }} handleScore={handleScore} />
-        <GameScore player1={player1} player2={player2} />
+        <PlayBoard click={handleCLick} currentPlayer={currentPlayer} xArray={xArray} oArray={oArray} playersMark={{ player1, player2 }} handleScore={handleScore} clearBoard={clearBoard} />
+        <GameScore gamer1={player1} gamer2={player2} score={score} />
     </SC.BoardStyled>);
 }
 
