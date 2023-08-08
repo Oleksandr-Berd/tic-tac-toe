@@ -7,10 +7,11 @@ import { ReactComponent as OSvg } from "../../assets/icon-o.svg"
 import Icons from '../Icons/Icons';
 
 interface IProps {
-    currentPlayer: string
+    currentPlayer: string,
+    handleRestart: ()=>void,
 }
 
-const GameBoardHeader: React.FC<IProps> = ({ currentPlayer }): JSX.Element => {
+const GameBoardHeader: React.FC<IProps> = ({ currentPlayer, handleRestart }): JSX.Element => {
     
 
     return (<SC.BoardHeader>
@@ -22,7 +23,7 @@ const GameBoardHeader: React.FC<IProps> = ({ currentPlayer }): JSX.Element => {
                 }
             
             <span>turn</span></SC.TableStyle>
-        <SC.RestartButton><RestartSvg /></SC.RestartButton>
+        <SC.RestartButton onClick={handleRestart}><RestartSvg /></SC.RestartButton>
     </SC.BoardHeader>);
 }
 

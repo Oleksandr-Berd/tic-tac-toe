@@ -5,6 +5,7 @@ import GameScore from '../GameScore/GameScore';
 import PlayBoard from '../PlayBoard/PlayBoard';
 import { useReducer, useState } from "react";
 import { Action, initialScore, reducer } from "../../utils/reducer";
+import { type } from "os";
 
 interface IProps {
     player1: string,
@@ -45,11 +46,16 @@ const GameBoard: React.FC<IProps> = ({ player1, player2 }): JSX.Element => {
         setCurrentPlayer("x")
     }    
 
+    const handleRestart = () => {
+        dispatch({ type: "RESTART" })
+        clearBoard()
+}
+
 console.log(score);
 
 
     return (<SC.BoardStyled >
-        <GameBoardHeader currentPlayer={currentPlayer} />
+        <GameBoardHeader currentPlayer={currentPlayer} handleRestart={handleRestart} />
         <PlayBoard click={handleCLick} currentPlayer={currentPlayer} xArray={xArray} oArray={oArray} playersMark={{ player1, player2 }} handleScore={handleScore} clearBoard={clearBoard} />
         <GameScore gamer1={player1} gamer2={player2} score={score} />
     </SC.BoardStyled>);
