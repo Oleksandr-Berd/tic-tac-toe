@@ -26,6 +26,8 @@ export const HeaderStyled = styled(Modal.Header)`
     background-color: ${(props) => props.theme.color.secondaryBG};
     border: none;
   }
+
+  
 `;
 
 export const TitleStyled = styled(Modal.Title)`

@@ -10,19 +10,24 @@ export const GridContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  gap: ${props => props.theme.space[5]};
+  gap: ${(props) => props.theme.space[5]};
 
-  margin-bottom: ${props => props.theme.space[5]};
+  margin-bottom: ${(props) => props.theme.space[5]};
 
   & > li {
     width: 96px;
     height: 96px;
 
-background-color: ${props=> props.theme.color.secondaryBG};
+    background-color: ${(props) => props.theme.color.secondaryBG};
 
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+    @media (min-width: 768px) {
+      width: 140px;
+      height: 140px;
+    }
   }
 `;
 

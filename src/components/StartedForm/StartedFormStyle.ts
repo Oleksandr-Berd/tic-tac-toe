@@ -29,6 +29,10 @@ export const FormContainer = styled.div`
   border-radius: ${(props) => props.theme.radius[3]};
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+  @media (min-width: 768px) {
+    margin-bottom: ${(props) => props.theme.space[10]};
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -54,6 +58,9 @@ export const Button = styled.input`
 `;
 
 export const FormFooterText = styled.h4`
+
+text-transform: uppercase;
+font-size: 14px;
   opacity: 0.5;
 `;
 
@@ -74,7 +81,6 @@ export const LabelStyled = styled.label<IProps>`
   padding-top: ${(props) => props.theme.space[5]};
   padding-bottom: ${(props) => props.theme.space[5]};
 
-
   background-color: ${(props) =>
     props.$active === "true" ? props.theme.color.text : props.theme.color.bg};
 
@@ -83,6 +89,14 @@ export const LabelStyled = styled.label<IProps>`
   & > svg {
     fill: ${(props) =>
       props.$active === "true" ? props.theme.color.bg : props.theme.color.text};
+  }
+  @media (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -108,15 +122,22 @@ export const SubmitButtonsContainer = styled.div`
 
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
       rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    @media (min-width: 768px) {
+      font-size: ${(props) => props.theme.size.XN};
+    }
   }
 
-  & > button:first-child {
-    margin-bottom: ${(props) => props.theme.space[4]};
-
+  & > button {
     background-color: ${(props) => props.theme.color.secondary};
-  }
 
-  & > button:last-child {
-    background-color: ${(props) => props.theme.color.primary};
+    transition: opacity 0.3s ease-in-out;
+  }
+  @media (min-width: 1440px) {
+    & > button:hover,
+    & > button:focus {
+      opacity: 0.5;
+      transition: opacity 0.3s ease-in-out;
+    }
   }
 `;

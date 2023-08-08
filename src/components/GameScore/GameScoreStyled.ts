@@ -19,14 +19,21 @@ export const ScoreBlock = styled.li`
   padding-left: 30px;
   padding-right: 30px;
 
-  /* text-align: center; */
-
   font-size: ${(props) => props.theme.size.XS};
   color: ${(props) => props.theme.color.bg};
   letter-spacing: 0.75px;
   line-height: 1;
 
   border-radius: 10px;
+
+  @media (min-width: 768px) {
+    min-width: 140px;
+
+    padding-left: 42px;
+    padding-right: 42px;
+
+    font-size: ${(props) => props.theme.size.S};
+  }
 
   &:first-child {
     background-color: ${(props) => props.theme.color.x};
@@ -45,7 +52,4 @@ export const ScoreBlock = styled.li`
   }
 `;
 
-
-export const Text = styled.span`
-
-`
+export const Text = styled.span``;
