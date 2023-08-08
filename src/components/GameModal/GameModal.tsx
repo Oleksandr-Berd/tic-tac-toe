@@ -4,17 +4,43 @@ import * as SC from "./GameModalStyled"
 
 import { ReactComponent as OSvg } from "../../assets/icon-o.svg"
 import { ReactComponent as XSvg } from "../../assets/icon-x.svg"
+import { Action } from '../../utils/reducer';
 
 interface IProps {
     toggleOverlay?: () => void,
     isOpen: boolean,
     $winner: string,
     winnersMark: string,
+    handleScore: (action: Action) => void,
+    closeModal: () => void,
+    clearBoard: () => void,
+
 }
 
 
-const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark }): JSX.Element => {
+const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark, handleScore, closeModal, clearBoard }): JSX.Element => {
 
+    const handleNext = () => {
+        switch ($winner) {
+            case "player1":
+                handleScore({ type: "PLAYER1" })
+                closeModal()
+                clearBoard()
+                break
+            case "player2":
+                handleScore({ type: "PLAYER2" })
+                closeModal()
+                clearBoard()
+                break
+            case "tie":
+                handleScore({ type: "TIE" })
+                closeModal()
+                clearBoard()
+        }
+
+}
+
+    
     return (
         <SC.CommonContainer
             centered
@@ -39,8 +65,8 @@ const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark }): JSX.Elem
                 <SC.QuitButton variant="primary">
                     <a href="app"> quit</a>
                 </SC.QuitButton>
-                <SC.NextButton variant="primary">
-                    next round
+                <SC.NextButton variant="primary" onClick={handleNext}>
+                    <a href="#board">next round</a>
                 </SC.NextButton>
             </SC.ButtonContainer>
         </SC.CommonContainer>

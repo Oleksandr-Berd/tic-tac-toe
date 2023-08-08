@@ -11,7 +11,7 @@ export const BoardHeader = styled.div`
 `;
 
 export const RestartButton = styled.button`
-  padding-top: ${(props) => props.theme.space[3]};
+  padding-top: ${(props) => props.theme.space[1]};
   padding-bottom: ${(props) => props.theme.space[2]};
   padding-right: ${(props) => props.theme.space[3]};
   padding-left: ${(props) => props.theme.space[3]};
