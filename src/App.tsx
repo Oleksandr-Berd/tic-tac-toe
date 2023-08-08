@@ -14,7 +14,8 @@ const App: React.FC = (): JSX.Element => {
     player2: "",
   });
 
-  const handleSubmit = (playerMark: string) => {
+  const handleSubmit = (playerMark: string):void => {
+    
     if (playerMark === "x") {
       setPlayersMark({ player1: playerMark, player2: "o" });
     } else {
@@ -24,14 +25,13 @@ const App: React.FC = (): JSX.Element => {
 
   const { player1, player2 } = playersMark
   
-
   
   return (
     <div className="App" id="app">
       <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <SharedLayout>
-          {player1 && player2 ? <GameBoard player1={player1} player2={player2} /> : <StartedForm submit={handleSubmit} />}
+          {player1 && player2 ? <GameBoard player1={player1} player2={player2} /> : <StartedForm submit={handleSubmit}/>}
           
         </SharedLayout>
       </ThemeProvider>

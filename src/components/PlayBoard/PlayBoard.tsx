@@ -13,7 +13,7 @@ interface IProps {
     xArray: number[],
     playersMark: { player1: string, player2: string },
     handleScore: (action: Action) => void,
-    clearBoard:()=>void,
+    clearBoard: () => void,
 }
 
 const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, playersMark, handleScore, clearBoard }): JSX.Element => {
