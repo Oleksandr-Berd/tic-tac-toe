@@ -19,12 +19,12 @@ const GameScore: React.FC<IProps> = ({ gamer1, gamer2, score }): JSX.Element => 
     return (
         <SC.ScoreTable>
             <SC.ScoreBlock><SC.Text>X {gamer1 === "o" ? "(P2)" : "(P1)"}</SC.Text>
-                <SC.Text>{gamer1 === "o" ? player2 : player1}</SC.Text>
+                <SC.Text style={{fontSize:"24px", fontWeight: "bold"}}>{gamer1 === "o" ? player2 : player1}</SC.Text>
             </SC.ScoreBlock>
-            <SC.ScoreBlock><SC.Text>Ties</SC.Text><SC.Text>{ties}</SC.Text></SC.ScoreBlock>
+            <SC.ScoreBlock><SC.Text >Ties</SC.Text><SC.Text style={{ fontSize: "24px", fontWeight: "bold" }}>{ties}</SC.Text></SC.ScoreBlock>
             <SC.ScoreBlock>
                 <SC.Text>O {gamer1 === "o" ? "(P1)" : "(P2)"}</SC.Text>
-                <SC.Text>{gamer1 === "o" ? player1 : player2}</SC.Text>
+                <SC.Text style={{ fontSize: "24px", fontWeight: "bold" }}>{gamer1 === "o" ? player1 : player2}</SC.Text>
             </SC.ScoreBlock>
         </SC.ScoreTable>
     );

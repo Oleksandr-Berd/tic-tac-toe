@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'usehooks-ts';
+
 import * as SC from "./GameBoardHeaderStyled"
 
 import { ReactComponent as RestartSvg } from "../../assets/icon-restart.svg"
@@ -14,12 +16,14 @@ interface IProps {
 const GameBoardHeader: React.FC<IProps> = ({ currentPlayer, handleRestart }): JSX.Element => {
     
 
+const isMobile = useMediaQuery("(max-width:767px)")
+
     return (<SC.BoardHeader>
         <Icons />
         <SC.TableStyle>
             {currentPlayer === "x" ?
-                <XSvg width={16} /> :
-                <OSvg width={16} />
+                <XSvg width={isMobile ? 16 : 20} /> :
+                <OSvg width={isMobile ? 16 : 20} />
                 }
             
             <span>turn</span></SC.TableStyle>

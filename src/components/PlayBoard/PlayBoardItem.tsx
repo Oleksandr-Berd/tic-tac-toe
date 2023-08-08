@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from 'usehooks-ts';
+
+
 import { ReactComponent as XSvg } from "../../assets/icon-x.svg";
 import { ReactComponent as OSvg } from "../../assets/icon-o.svg";
 
@@ -15,7 +18,7 @@ const PlayBoardItem: React.FC<IProps> = ({ moveClick, currentPlayer, index, isCl
     const [isClicked, setIsClicked] = useState<boolean>(false)
     const [isMoved, setIsMoved] = useState("")
 
-
+const isMobile = useMediaQuery("(max-width:767px)")
 
     const handleClick = () => {
         setIsMoved(currentPlayer)
@@ -32,7 +35,8 @@ const PlayBoardItem: React.FC<IProps> = ({ moveClick, currentPlayer, index, isCl
     
     return (
         <SC.Item onClick={handleClick}>
-            {isClicked && isMoved === "x" && !isClear ? <XSvg fill="#31C3BD" width={40} /> : isClicked && isMoved === "o" && !isClear ? <OSvg fill="#F2B137" width={40} /> : null}      
+            
+            {isClicked && isMoved === "x" && !isClear ? <XSvg fill="#31C3BD" width={isMobile ? 40 : 64} /> : isClicked && isMoved === "o" && !isClear ? <OSvg fill="#F2B137" width={isMobile ? 40 : 64} /> : null}      
         </SC.Item>
     );
 };

@@ -21,11 +21,18 @@ export const RestartButton = styled.button`
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
-    border-radius: 5px;
+  border-radius: 5px;
+
+  @media (min-width: 768px) {
+    padding-top: ${(props) => props.theme.space[2]};
+    padding-bottom: ${(props) => props.theme.space[4]};
+    padding-right: ${(props) => props.theme.space[4]};
+    padding-left: ${(props) => props.theme.space[4]};
+  }
 `;
 
 export const TableStyle = styled.div`
-display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -44,11 +51,22 @@ display: flex;
 
   border-radius: 5px;
 
+  @media (min-width: 768px) {
+    padding-left: 30px;
+    padding-right: 30px;
+
+    margin-right: 16px;
+  }
+
   & > svg {
     display: inline-block;
     height: auto;
     margin-right: ${(props) => props.theme.space[2]};
 
-    fill: ${props => props.theme.color.text};
+    fill: ${(props) => props.theme.color.text};
+
+    @media (min-width: 768px) {
+      margin-right: 13px;
+    }
   }
 `;
