@@ -1,4 +1,4 @@
-import * as React from "react"; // Import React
+import {useState, useEffect} from "react";
 import * as SC from "./PlayBoardStyled";
 
 import PlayBoardItem from "./PlayBoardItem";
@@ -17,29 +17,35 @@ interface IProps {
 }
 
 const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, playersMark, handleScore, clearBoard }): JSX.Element => {
-    const [isOpen, setIsOpen] = React.useState<boolean>(false)
-    const [winner, setWinner] = React.useState<string>("")
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [winner, setWinner] = useState<string>("")
 
     const handleClick = (index:number) => {
         click(index);
     };
     
 
-    React.useEffect(() => {
-        const testX:any = winningCombinations.map((el) => el.every(subel => xArray.includes(subel)))
-        const testO:any = winningCombinations.map((el) => el.every(subel => oArray.includes(subel)))
+    useEffect(() => {
+        const matrixX:any = winningCombinations.map((el) => el.every(subel => xArray.includes(subel)))
+        const matrixO:any = winningCombinations.map((el) => el.every(subel => oArray.includes(subel)))
 
-        if (testX.includes(true) | testO.includes(true))
+        if (matrixX.includes(true) | matrixO.includes(true))
         {
             setIsOpen(true)
-            setWinner(testX.includes(true) ? "x" : "o")
+            setWinner(matrixX.includes(true) ? "x" : "o")
         } 
+
+        if (xArray.length === 5 && !matrixX.includes(true) && !matrixO.includes(true)) {
+            setIsOpen(true)
+            setWinner("tie")
+        }
     }, [xArray, oArray])
    
 
     const playerWinner = Object.keys(playersMark).find(
         (el) => playersMark[el as keyof typeof playersMark] === winner
     );    
+
 
     const elementsArray = new Array(9).fill("");
 
@@ -62,7 +68,7 @@ const PlayBoard: React.FC<IProps> = ({ click, currentPlayer, xArray, oArray, pla
             ))}
 
         </SC.GridContainer>
-        <GameModal isOpen={isOpen} $winner={playerWinner!} winnersMark={winner} handleScore={handleScore} closeModal={closeModal} clearBoard={clearBoard} />
+        <GameModal isOpen={isOpen} $winner={playerWinner ? playerWinner : "tie"} winnersMark={winner} handleScore={handleScore} closeModal={closeModal} clearBoard={clearBoard} />
     </>
     );
 };

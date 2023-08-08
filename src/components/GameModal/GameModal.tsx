@@ -51,14 +51,14 @@ const GameModal: React.FC<IProps> = ({ isOpen, $winner, winnersMark, handleScore
         >
             <SC.HeaderStyled>
                 <Modal.Title id="example-modal-sizes-title-lg">
-                    {$winner} wins!
+                    {winnersMark === "tie" ? null : `${$winner} wins!`}
                 </Modal.Title>
 
             </SC.HeaderStyled>
             <SC.BodyStyled>
                 <SC.WinnerText $winner={winnersMark}>
-                    {winnersMark === "x" ? <XSvg width={30} fill="#31C3BD" /> : <OSvg width={30} fill="#F2B137" />}
-                    <span>takes the round</span>
+                    {winnersMark === "x" ? <XSvg width={30} fill="#31C3BD" /> : winnersMark === "o" ? <OSvg width={30} fill="#F2B137" /> : null}
+                    {winnersMark !== "tie" ? <span>takes the round</span> : <span style={{ color: "#A8BFC9" }}>round tied</span> }
                 </SC.WinnerText>
             </SC.BodyStyled>
             <SC.ButtonContainer>
