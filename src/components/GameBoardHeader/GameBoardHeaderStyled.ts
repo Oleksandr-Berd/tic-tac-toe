@@ -23,11 +23,21 @@ export const RestartButton = styled.button`
 
   border-radius: 5px;
 
+  transition: opacity 0.3s ease-in-out;
+
   @media (min-width: 768px) {
     padding-top: ${(props) => props.theme.space[2]};
     padding-bottom: ${(props) => props.theme.space[4]};
     padding-right: ${(props) => props.theme.space[4]};
     padding-left: ${(props) => props.theme.space[4]};
+
+    @media (min-width: 1440px) {
+      &:hover,
+      & :focus {
+        opacity: 0.5;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
   }
 `;
 
